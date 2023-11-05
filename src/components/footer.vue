@@ -7,7 +7,7 @@
         <div id="footer-nav-menu">
             <RouterLink to="/">Home Page</RouterLink>
             <RouterLink to="/another">Another Page</RouterLink>
-            <RouterLink to="/">Home Page</RouterLink>
+            <RouterLink to="/commentdebug">Comment</RouterLink>
             <RouterLink to="/">Home Page</RouterLink>
         </div>
         <div id="copyright-notice">

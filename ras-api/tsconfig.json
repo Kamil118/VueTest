@@ -1,0 +1,16 @@
+{
+  "files": [],
+  "compilerOptions": {
+    "module": "NodeNext",
+    "target": "ES6",
+    "esModuleInterop": true,
+    "noEmit": true,
+    "allowImportingTsExtensions":true,
+    "moduleResolution": "NodeNext"
+  },
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ]
+}

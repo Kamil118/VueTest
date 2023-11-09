@@ -1,20 +1,23 @@
 import express from 'express'
 //import { db } from './src/model/db.js'
-import { ModelFactory as Comment } from './src/model/comment.ts'
+import CommentController from './src/controller/CommentController.ts'
 
 
 let app = express()
 const port = 5174
 
 
-let test = new Comment()
+let cc = new CommentController()
 
-test.model.destroy({
+cc.model.destroy({
     truncate: true
   })
 
-test.model.create({content:"test comment"})
-
-test.model.findAll().then((result) =>{
-    console.log(result)
+cc.createCommentTest("funny comment").then(() =>{
+  cc.getComment(1).then((c) =>{
+    console.log(c)
+  })
 })
+
+
+

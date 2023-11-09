@@ -1,4 +1,4 @@
-import { DataTypes, Model } from 'sequelize'
+import { DataTypes, Model, Sequelize } from 'sequelize'
 import db from './db.ts'
 import { UserModel } from './user.ts'
 import { PostModel } from './post.ts'
@@ -17,9 +17,9 @@ export class CommentModel extends Model
     }
 }
 
-export class ModelFactory{
-    connection:any
-    model:any
+class ModelFactory{
+    connection: Sequelize
+    model: typeof CommentModel
     constructor()
     {
         this.connection = db
@@ -33,36 +33,14 @@ export class ModelFactory{
     }
 }
 
+var commentModel
 
-/*class CommentController{
-    connection: any
-    model: any
-    constructor()
+function getCommentModel(){
+    if(commentModel == undefined)
     {
-        this.connection = db.getConnection()
-        this.model = CommentModel
-        this.model.init(this.model.modelDefinition,this.connection)
-        this.connection.sync()
+        commentModel = new ModelFactory().model
     }
-    async getComment(CommentId: number):Promise<CommentModel | null>{
-        return this.model.findByPk(CommentId)
-    }
-    async getPostComments(PostId: number):Promise<[CommentModel]>{
-        return this.model.findAll({
-            where: {
-                postId: PostId
-            }
-        })
-    }
-    async getUserComments(UserId: number):Promise<[CommentModel]>{
-        return this.model.findAll({
-            where: {
-                userId: UserId
-            }
-        })
-    }
-    async saveComment(comment:CommentModel):Promise<CommentModel>
-    {
-        return comment.save()
-    }
-}*/
+    return commentModel
+}
+
+export default getCommentModel
